@@ -1,9 +1,9 @@
-import type { NextConfig } from 'next'
-import createNextIntlPlugin from 'next-intl/plugin'
+const createNextIntlPlugin = require('next-intl/plugin');
 
-const withNextIntl = createNextIntlPlugin('./src/i18n.ts')
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   experimental: {
     serverComponentsExternalPackages: ['bcryptjs'],
   },
@@ -20,8 +20,8 @@ const nextConfig: NextConfig = {
           { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
         ],
       },
-    ]
+    ];
   },
-}
+};
 
-export default withNextIntl(nextConfig)
+module.exports = withNextIntl(nextConfig);
