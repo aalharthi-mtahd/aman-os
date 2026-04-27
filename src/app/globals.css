@@ -1,0 +1,184 @@
+/* src/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0A0F1E;
+  --color-card: #0F1628;
+  --color-card2: #141d35;
+  --color-border: #1e2d4d;
+  --color-green: #0B6B4F;
+  --color-emerald: #10B981;
+  --color-blue: #3B82F6;
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-syne), system-ui, sans-serif;
+}
+
+/* Arabic font override */
+[dir='rtl'] body,
+[dir='rtl'] .font-display,
+[dir='rtl'] p,
+[dir='rtl'] span,
+[dir='rtl'] div,
+[dir='rtl'] h1,
+[dir='rtl'] h2,
+[dir='rtl'] h3,
+[dir='rtl'] h4 {
+  font-family: var(--font-tajawal), system-ui, sans-serif;
+}
+
+[dir='rtl'] .font-mono,
+[dir='rtl'] .kpi-value {
+  font-family: var(--font-ibm-mono), monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3f6a;
+}
+
+/* Pulse animation for live indicators */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Fade in animation */
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.4s ease-out forwards;
+}
+
+/* Stagger children */
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 120ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 180ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 240ms; }
+
+/* Card glow on hover */
+.card-glow:hover {
+  box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.2),
+              0 4px 24px rgba(16, 185, 129, 0.06);
+}
+
+/* AI glow effect */
+.ai-glow {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Number formatting */
+.kpi-value {
+  font-family: var(--font-ibm-mono), monospace;
+  font-feature-settings: 'tnum';
+  letter-spacing: -0.02em;
+}
+
+/* Status indicators */
+.status-green {
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+}
+
+.status-yellow {
+  box-shadow: 0 0 6px rgba(245, 158, 11, 0.6);
+}
+
+.status-red {
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-emerald);
+  outline-offset: 2px;
+}
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-card) 25%,
+    var(--color-card2) 50%,
+    var(--color-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* RTL table flip */
+[dir='rtl'] table th,
+[dir='rtl'] table td {
+  text-align: right;
+}
+
+/* Progress bar */
+.progress-bar {
+  height: 4px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--color-card2);
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+
+/* Chart tooltip */
+.recharts-tooltip-wrapper {
+  z-index: 50;
+}
+
+/* Sidebar transition */
+.sidebar-nav-item {
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Number mono */
+.mono {
+  font-family: var(--font-ibm-mono), monospace;
+}
