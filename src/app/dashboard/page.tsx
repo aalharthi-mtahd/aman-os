@@ -92,14 +92,17 @@ export default function DashboardPage() {
       }
     : undefined;
 
-  const conversionDelta = deltas?.conversionRate
-    ? {
-        value: deltas.conversionRate.value ?? 0,
-        percentage: deltas.conversionRate.percentage ?? 0,
-        direction: ["up", "down", "stable"].includes(deltas.conversionRate.direction)
-          ? deltas.conversionRate.direction
+  const transactionsDelta: KPIDelta | undefined = deltas?.transactions
+  ? {
+      value: deltas.transactions.value ?? 0,
+      percentage: deltas.transactions.percentage ?? 0,
+      direction:
+        deltas.transactions.direction === "up"
+          ? "up"
+          : deltas.transactions.direction === "down"
+          ? "down"
           : "stable",
-      }
+    }
     : undefined;
 
   return (
